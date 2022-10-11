@@ -1,0 +1,40 @@
+textarea {
+  border: 0px;
+  border-bottom: 3px solid #545149;
+  margin-bottom: .5em;
+  background-color: #f4f1ec;
+  width: 100%;
+  height: 2.5em;
+}
+
+h3 {
+  margin: 1em 0em 0em;
+}
+
+.new-tweet {
+  width: 100%;
+}
+
+.new-tweet div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.counter {
+  font-family: 'Bungee', cursive;
+  font-size: 1em
+}
+
+.counter.negative {
+  color: rgb(225, 0, 0)
+}
+
+button {
+  border: 2px;
+  color: #FFFFFF;
+  background-color: #4056a1;
+  font-family: 'Bungee', cursive;
+  padding: .25em .75em;
+  font-size: .75em
+}
