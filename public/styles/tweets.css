@@ -1,4 +1,4 @@
-#all-tweets {
+#tweets-container {
   font-weight: bolder;
 }
 
@@ -9,7 +9,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: .5em .75em;
+  padding: .5em .8em;
+  margin-bottom: 1em;
 }
 
 .tweet:hover {
@@ -20,6 +21,14 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
+}
+
+.tweet .user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75em;
 }
 
 .tweet p {

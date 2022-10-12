@@ -1,6 +1,7 @@
 $(document).ready(() => {
-  const $textArea = $('#tweet-text');
   
+  // Listen for input events on new tweet field and update character counter
+  const $textArea = $('#tweet-text');
   $textArea.on('input', function() {
     $charCounter = $(this).siblings().children('.counter')
     $charCounter.val(140 - $(this).val().length);
@@ -11,10 +12,6 @@ $(document).ready(() => {
     if ($charCounter.val() >= 0) {
       $charCounter.removeClass('negative');
     } 
-    
   });
-  
-
-
 
 }); 
