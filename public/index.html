@@ -50,10 +50,8 @@
 
       <section class="new-tweet">
         <h3>What are you humming about?</h3>
-        
-        <form action="/tweets" method="POST">
+        <form id="new-tweet-form" action="/tweets" method="POST">
           <textarea name="text" id="tweet-text"></textarea>
-          
           <div>
             <button type="submit">Tweet</button>
             <output class="counter" for="tweet-text">140</output>
@@ -61,8 +59,8 @@
         </form>
       </section>
       
+
       <section id="tweets-container">
-        
       </section>
 
     </main>
