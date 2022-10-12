@@ -1,31 +1,5 @@
 $(document).ready(() => {
-
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ];
-
-
+  
   const createTweetElement = (tweetObject) => {
     const $tweet = $(
       `<article class="tweet">
@@ -38,7 +12,7 @@ $(document).ready(() => {
       </header>
       <p>${tweetObject.content.text}</p>
       <footer>
-        <span>${tweetObject.created_at}</span>
+        <span>${timeago.format(tweetObject.created_at)}</span>
         <div class="icons">
           <i class="fa-regular fa-flag"></i>
           <i class="fa-regular fa-heart"></i>
@@ -51,30 +25,53 @@ $(document).ready(() => {
     return $tweet;
   };
 
-  // Loop through tweets data, build up and append to container in page
+  // Loops through array of tweets and renders each onto page
   const $tweetsContainer =  $('#tweets-container');
   const renderTweets = (tweetsArray) => {
     for (let tweet of tweetsArray) {
       const $tweet = createTweetElement(tweet);
-      $tweetsContainer.append($tweet);
+      $tweetsContainer.prepend($tweet);
     }
   };
 
-  renderTweets(data);
+  // AJAX GET to load tweets from database and render
+  const loadTweets = () => {
+    $.ajax({
+      url: '/tweets',
+      method: 'GET',
+      dataType: 'json',
+    })
+    .then((loadedTweets) => {
+      renderTweets(loadedTweets);
+    })
+  };
+
+  loadTweets();
+
+
 
 
   // Listen for new tweet form submission and prevent default behaviour
   const $newTweetForm = $('#new-tweet-form');
+  const $textArea = $('#tweet-text');
+
   $newTweetForm.submit(function(event) {
     event.preventDefault();
+    
+    // Preliminary form validation
+    if (!$textArea.val()) {
+      return alert('Your Tweet cannot be empty.');
+    }
+    if ($textArea.val().length > 140) {
+      return alert('Your Tweet is too long.');
+    }
 
-    // Send form data converted to query string in AJAX POST request
+    // Send form data converted to query string in AJAX POST
     $.ajax({
       url: '/',
       method: 'POST',
       data: $newTweetForm.serialize(),
     })
-        
   });
 
 
