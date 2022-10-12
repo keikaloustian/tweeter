@@ -11,6 +11,10 @@
   align-items: center;
 }
 
+.tweet:hover {
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
 .tweet header {
   display: flex;
   width: 100%;
@@ -32,3 +36,18 @@
   padding: 1em .5%;
 }
 
+.icons {
+  width: 7%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tweet .fa-flag:hover {
+  color: #c79c00;
+}
+.tweet .fa-heart:hover {
+  color: #c79c00;
+}
+.tweet .fa-retweet:hover {
+  color: #c79c00;
+}
