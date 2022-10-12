@@ -13,6 +13,7 @@ h3 {
 
 .new-tweet {
   width: 100%;
+  margin-bottom: 1em;
 }
 
 .new-tweet div {
@@ -30,7 +31,7 @@ h3 {
   color: rgb(225, 0, 0)
 }
 
-button {
+.new-tweet button {
   border: 2px;
   color: #FFFFFF;
   background-color: #4056a1;

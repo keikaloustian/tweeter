@@ -1,0 +1,34 @@
+#all-tweets {
+  font-weight: bolder;
+}
+
+.tweet {
+  border: 3px solid #545149;
+  border-radius: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tweet header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0.5em 2%;
+}
+
+.tweet p {
+  align-self: stretch;
+  padding: 0em 2%;
+}
+
+.tweet footer {
+  display:flex;
+  justify-content: space-between;
+  font-size: small;
+  width: 97%;
+  border-top: 3px solid #545149;
+  padding: 1em .5%;
+}
+
