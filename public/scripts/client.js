@@ -34,19 +34,17 @@ $(document).ready(() => {
     }
   };
 
-  // AJAX GET to load tweets from database and render
-  const loadTweets = () => {
-    $.ajax({
+  // On page load, AJAX GET to retrieve tweets from database and render
+  $.ajax({
       url: '/tweets',
       method: 'GET',
       dataType: 'json',
-    })
-    .then((loadedTweets) => {
-      renderTweets(loadedTweets);
-    })
-  };
-
-  loadTweets();
+  })
+  .then((tweets) => {
+    renderTweets(tweets);
+  })
+  
+  
 
 
 
@@ -68,11 +66,30 @@ $(document).ready(() => {
 
     // Send form data converted to query string in AJAX POST
     $.ajax({
-      url: '/',
+      url: '/tweets',
       method: 'POST',
       data: $newTweetForm.serialize(),
     })
+
+    .then ((data) => {
+      // Refetch tweets from database
+      return $.ajax({
+        url: '/tweets',
+        method: 'GET',
+        dataType: 'json',
+      })
+    })
+
+    .then((tweets) => {
+      // Create new tweet element from latest and render
+      const $newTweet = createTweetElement(tweets[tweets.length - 1]);
+      $tweetsContainer.prepend($newTweet);
+    })
   });
+
+
+
+
 
 
 });
