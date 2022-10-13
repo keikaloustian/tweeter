@@ -64,7 +64,7 @@ $(document).ready(() => {
   $newTweetForm.submit(function(event) {
     event.preventDefault();
     
-    // Preliminary form validation
+    // Validation against empty / oversized tweet
     if ($errorMessage.is(':visible')) {
       $errorMessage.hide();
     }
