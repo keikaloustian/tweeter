@@ -22,6 +22,12 @@ h3 {
   justify-content: space-between;
 }
 
+#error-message {
+  color: red;
+  font-weight: 600;
+  display: none;
+}
+
 .counter {
   font-family: 'Bungee', cursive;
   font-size: 1em

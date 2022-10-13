@@ -1,5 +1,12 @@
 $(document).ready(() => {
   
+  // Cross-Site Scripting prevention
+  const escapeFunction = function (string, element) {
+    let newElement = document.createElement(element);
+    newElement.appendChild(document.createTextNode(string));
+    return newElement.innerHTML;
+  };
+  
   const createTweetElement = (tweetObject) => {
     const $tweet = $(
       `<article class="tweet">
@@ -10,7 +17,7 @@ $(document).ready(() => {
         </div>
           <span>${tweetObject.user.handle}</span>
       </header>
-      <p>${tweetObject.content.text}</p>
+      <p>${escapeFunction(tweetObject.content.text, 'p')}</p>
       <footer>
         <span>${timeago.format(tweetObject.created_at)}</span>
         <div class="icons">
@@ -52,16 +59,26 @@ $(document).ready(() => {
   // Listen for new tweet form submission and prevent default behaviour
   const $newTweetForm = $('#new-tweet-form');
   const $textArea = $('#tweet-text');
+  const $errorMessage = $('#error-message');
 
   $newTweetForm.submit(function(event) {
     event.preventDefault();
     
     // Preliminary form validation
+    if ($errorMessage.is(':visible')) {
+      $errorMessage.hide();
+    }
     if (!$textArea.val()) {
-      return alert('Your Tweet cannot be empty.');
+      $errorMessage.text('Your tweet can\'t be empty')
+      $errorMessage.slideDown('fast');
+      $textArea.focus();
+      return;
     }
     if ($textArea.val().length > 140) {
-      return alert('Your Tweet is too long.');
+      $errorMessage.text('Your tweet is too long');
+      $errorMessage.slideDown('fast');
+      $textArea.focus();
+      return;
     }
 
     // Send form data converted to query string in AJAX POST
