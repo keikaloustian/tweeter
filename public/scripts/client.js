@@ -62,7 +62,7 @@ $(document).ready(() => {
   const $newTweetForm = $('#new-tweet-form');
   const $textArea = $('#tweet-text');
   const $errorMessage = $('.error-message');
-  const $errorIcon = $('.error-icon');
+  const $errorIcon = $errorMessage.siblings('.error-icon');
   
   // Listen for submission and prevent default behaviour
   $newTweetForm.submit(function(event) {
@@ -104,11 +104,13 @@ $(document).ready(() => {
       });
     })
 
-    // Create new tweet element and render; clear form
+    // Create new tweet element and render
     .then((tweets) => {
       const $newTweet = createTweetElement(tweets[tweets.length - 1]);
       $tweetsContainer.prepend($newTweet);
+      // Clear form and reset character counter
       $textArea.val('');
+      $textArea.trigger('input');
     });
   });
 

@@ -18,15 +18,13 @@ textarea {
   justify-content: space-between;
 }
 
-.error-icon {
+.error-message, .error-icon {
   color: red;
   display: none;
 }
 
 .error-message {
-  color: red;
   font-weight: 600;
-  display: none;
   margin-left: 0.5em;
 }
 
