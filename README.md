@@ -7,9 +7,9 @@ Built HTML, CSS, JavaScript, jQuery and AJAX.
 
 ## Final Product
 
-!["Screenshot of initial tweets"]()
-!["Screenshot after new tweet"]()
-!["Screenshot of layout for small screen"]()
+!["Screenshot of initial tweets"](https://github.com/keikaloustian/tweeter/blob/master/docs/home.png?raw=true)
+!["Screenshot after new tweet"](https://github.com/keikaloustian/tweeter/blob/master/docs/new-tweet.png?raw=true)
+!["Screenshot of layout for small screen"](https://github.com/keikaloustian/tweeter/blob/master/docs/small-layout.png?raw=true)
 
 ## Dependencies
 
