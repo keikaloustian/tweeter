@@ -7,13 +7,9 @@ textarea {
   height: 2.5em;
 }
 
-h3 {
-  margin: 1em 0em 0em;
-}
-
 .new-tweet {
   width: 100%;
-  margin-bottom: 1em;
+  margin: 1em 0;
 }
 
 .new-tweet div {

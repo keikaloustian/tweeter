@@ -1,0 +1,21 @@
+@media only screen and (min-width: 1024px) {
+
+  .user-header {
+    width: 30%;
+    min-height: 400px;
+    margin-top: 1.5em;
+    margin-left: 1.5em;
+    padding-top: 1em;
+  }
+  
+  .container {
+    width: 60%;
+    margin-right: 1.5em;
+  }
+
+  .header-main {
+    display:flex;
+    align-items: flex-start;
+  }
+
+}

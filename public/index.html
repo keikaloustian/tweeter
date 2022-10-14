@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
     <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/media-query.css" type="text/css" />
 
     <!-- External JS (jQuery) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -37,36 +38,38 @@
       </div>
     </nav>
 
-    <header class="user-header">
-      <div>
-          <img src="/images/profile-hex.png"> 
-      </div>
-      <div>
-          <h2 id="username"><b>Jane</b> Doe</h2>
-      </div>
-      <br>
-    </header>
-  
-    <main class="container">
+    <div class="header-main">
+      <header class="user-header">
+        <div>
+            <img src="/images/profile-hex.png"> 
+        </div>
+        <div>
+            <h2 id="username"><b>Jane</b> Doe</h2>
+        </div>
+      </header>
 
-      <section class="new-tweet">
-        <p id="error-message"></p>
-        <h3>What are you humming about?</h3>
-        <form id="new-tweet-form" action="/tweets" method="POST">
-          <textarea name="text" id="tweet-text"></textarea>
-          <div>
-            <button type="submit">Tweet</button>
-            <output class="counter" for="tweet-text">140</output>
-          </div>
-        </form>
-      </section>
-      
-
-      <section id="tweets-container">
-      </section>
-
-    </main>
     
+      <main class="container">
+
+        <section class="new-tweet">
+          <p id="error-message"></p>
+          <h3>What are you humming about?</h3>
+          <form id="new-tweet-form" action="/tweets" method="POST">
+            <textarea name="text" id="tweet-text"></textarea>
+            <div>
+              <button type="submit">Tweet</button>
+              <output class="counter" for="tweet-text">140</output>
+            </div>
+          </form>
+        </section>
+        
+
+        <section id="tweets-container">
+        </section>
+
+      </main>
+    </div>
+
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>

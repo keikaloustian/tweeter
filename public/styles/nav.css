@@ -3,7 +3,7 @@ nav {
   background-color: firebrick;
   padding: 0em 1.5em;
   color: #FFFFFF;
-  position: fixed;
+  /* position: fixed; */
   width: 100%;
 
   display: flex;
@@ -30,5 +30,5 @@ nav {
 }
 
 .write-new>i {
-  color: #FFDB58
+  color: #E7C800
 }

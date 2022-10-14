@@ -51,11 +51,11 @@
 }
 
 .tweet .fa-flag:hover {
-  color: #c79c00;
+  color: darkorange;
 }
 .tweet .fa-heart:hover {
-  color: #c79c00;
+  color: darkorange;
 }
 .tweet .fa-retweet:hover {
-  color: #c79c00;
+  color: darkorange;
 }
