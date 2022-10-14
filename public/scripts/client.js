@@ -44,7 +44,8 @@ $(document).ready(() => {
 
 
 
-  // ON PAGE LOAD, AJAX GET to retrieve tweets from database and render
+  // ON PAGE LOAD
+  // AJAX GET to retrieve tweets from database and render
   $.ajax({
     url: '/tweets',
     method: 'GET',
@@ -60,7 +61,8 @@ $(document).ready(() => {
   // TWEET COMPOSER HANDLER
   const $newTweetForm = $('#new-tweet-form');
   const $textArea = $('#tweet-text');
-  const $errorMessage = $('#error-message');
+  const $errorMessage = $('.error-message');
+  const $errorIcon = $('.error-icon');
   
   // Listen for submission and prevent default behaviour
   $newTweetForm.submit(function(event) {
@@ -69,16 +71,19 @@ $(document).ready(() => {
     // Validation against empty / oversized tweet
     if ($errorMessage.is(':visible')) {
       $errorMessage.hide();
+      $errorIcon.hide();
     }
     if (!$textArea.val()) {
       $errorMessage.text('Your tweet can\'t be empty');
       $errorMessage.slideDown('fast');
+      $errorIcon.slideDown('fast');
       $textArea.focus();
       return;
     }
     if ($textArea.val().length > 140) {
       $errorMessage.text('Your tweet is too long');
       $errorMessage.slideDown('fast');
+      $errorIcon.slideDown('fast');
       $textArea.focus();
       return;
     }

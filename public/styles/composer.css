@@ -12,16 +12,22 @@ textarea {
   margin: 1em 0;
 }
 
-.new-tweet div {
+.new-tweet footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-#error-message {
+.error-icon {
+  color: red;
+  display: none;
+}
+
+.error-message {
   color: red;
   font-weight: 600;
   display: none;
+  margin-left: 0.5em;
 }
 
 .counter {
