@@ -1,12 +1,13 @@
 $(document).ready(() => {
   
   // Cross-Site Scripting prevention
-  const escapeFunction = function (string, element) {
+  const escapeFunction = function(string, element) {
     let newElement = document.createElement(element);
     newElement.appendChild(document.createTextNode(string));
     return newElement.innerHTML;
   };
   
+  // Builds tweet html from object
   const createTweetElement = (tweetObject) => {
     const $tweet = $(
       `<article class="tweet">
@@ -28,11 +29,10 @@ $(document).ready(() => {
       </footer>
       </article>`
     );
-
     return $tweet;
   };
 
-  // Loops through array of tweets and renders each onto page
+  // Loops through array of tweets, builds and renders each onto page
   const $tweetsContainer =  $('#tweets-container');
   const renderTweets = (tweetsArray) => {
     for (let tweet of tweetsArray) {
@@ -43,24 +43,22 @@ $(document).ready(() => {
 
   // On page load, AJAX GET to retrieve tweets from database and render
   $.ajax({
-      url: '/tweets',
-      method: 'GET',
-      dataType: 'json',
+    url: '/tweets',
+    method: 'GET',
+    dataType: 'json',
   })
-  .then((tweets) => {
-    renderTweets(tweets);
-  })
+    .then((tweets) => {
+      renderTweets(tweets);
+    });
   
-  
 
 
-
-
-  // Listen for new tweet form submission and prevent default behaviour
+    
   const $newTweetForm = $('#new-tweet-form');
   const $textArea = $('#tweet-text');
   const $errorMessage = $('#error-message');
-
+  
+  // Listen for tweet form submission and prevent default behaviour
   $newTweetForm.submit(function(event) {
     event.preventDefault();
     
@@ -69,7 +67,7 @@ $(document).ready(() => {
       $errorMessage.hide();
     }
     if (!$textArea.val()) {
-      $errorMessage.text('Your tweet can\'t be empty')
+      $errorMessage.text('Your tweet can\'t be empty');
       $errorMessage.slideDown('fast');
       $textArea.focus();
       return;
@@ -88,26 +86,21 @@ $(document).ready(() => {
       data: $newTweetForm.serialize(),
     })
 
-    .then ((data) => {
-      // Refetch tweets from database
-      return $.ajax({
-        url: '/tweets',
-        method: 'GET',
-        dataType: 'json',
+    // Refetch tweets from database with AJAX GET
+      .then((data) => {
+        return $.ajax({
+          url: '/tweets',
+          method: 'GET',
+          dataType: 'json',
+        });
       })
-    })
 
-    .then((tweets) => {
-      // Create new tweet element from latest and render
-      const $newTweet = createTweetElement(tweets[tweets.length - 1]);
-      $tweetsContainer.prepend($newTweet);
-    })
+    // Create new tweet element from latest in database and render
+      .then((tweets) => {
+        const $newTweet = createTweetElement(tweets[tweets.length - 1]);
+        $tweetsContainer.prepend($newTweet);
+      });
   });
-
-
-
-
-
 
 });
 
