@@ -31,5 +31,15 @@ nav {
 }
 
 .write-new-button>i {
-  color: #E7C800
+  color: #E7C800;
+  animation: bobbing 2.75s ease-in-out infinite;
+}
+
+@keyframes bobbing {
+  0%, 100% {
+    transform: translateY(-20%);
+  }
+  50% {
+    transform: translateY(10%);
+  }
 }

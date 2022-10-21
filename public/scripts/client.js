@@ -55,23 +55,10 @@ $(document).ready(() => {
     renderTweets(tweets);
   });
   
-  // Hide composer, reveal when Write new button is clicked
-  const $composer = $('.new-tweet');
-  const $textArea = $('#tweet-text');
-  $composer.hide();
-  
-  const $writeNew = $('.write-new-button')
-  $writeNew.on('click', function() {
-    $composer.slideToggle('400');
-    $textArea.focus();
-  });
-
-
-  
     
   // COMPOSER HANDLER
   const $newTweetForm = $('#new-tweet-form');
-  
+  const $textArea = $('#tweet-text');
   const $errorMessage = $('.error-message');
   const $errorIcon = $errorMessage.siblings('.error-icon');
   
