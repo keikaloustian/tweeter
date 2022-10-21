@@ -22,6 +22,10 @@ nav {
   align-items: center;
 }
 
+.write-new:hover {
+  color: black;
+}
+
 .write-new>p {
   margin: .5em 0em;
 }

@@ -55,17 +55,20 @@ $(document).ready(() => {
     renderTweets(tweets);
   });
   
+  
+  const $newTweet = $('.new-tweet');
 
+  
 
-    
   // TWEET COMPOSER HANDLER
-  const $newTweetForm = $('#new-tweet-form');
-  const $textArea = $('#tweet-text');
-  const $errorMessage = $('.error-message');
-  const $errorIcon = $errorMessage.siblings('.error-icon');
+  const $newTweetForm = $newTweet.find('#new-tweet-form');
   
   // Listen for submission and prevent default behaviour
   $newTweetForm.submit(function(event) {
+    const $textArea = $('#tweet-text');
+    const $errorMessage = $('.error-message');
+    const $errorIcon = $errorMessage.siblings('.error-icon');
+    
     event.preventDefault();
     
     // Validation against empty / oversized tweet
