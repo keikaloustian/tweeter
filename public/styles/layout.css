@@ -18,3 +18,7 @@ main {
   margin: auto;
   background-color: #f4f1ec;
 }
+
+#tweets-container {
+  margin-top: 1em;
+}

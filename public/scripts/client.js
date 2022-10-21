@@ -55,38 +55,47 @@ $(document).ready(() => {
     renderTweets(tweets);
   });
   
+  // Hide composer, reveal when Write new button is clicked
+  const $composer = $('.new-tweet');
+  const $textArea = $('#tweet-text');
+  $composer.hide();
   
-  const $newTweet = $('.new-tweet');
+  const $writeNew = $('.write-new-button')
+  $writeNew.on('click', function() {
+    $composer.slideToggle('400');
+    $textArea.focus();
+  });
+
 
   
-
-  // TWEET COMPOSER HANDLER
-  const $newTweetForm = $newTweet.find('#new-tweet-form');
+    
+  // COMPOSER HANDLER
+  const $newTweetForm = $('#new-tweet-form');
+  
+  const $errorMessage = $('.error-message');
+  const $errorIcon = $errorMessage.siblings('.error-icon');
   
   // Listen for submission and prevent default behaviour
   $newTweetForm.submit(function(event) {
-    const $textArea = $('#tweet-text');
-    const $errorMessage = $('.error-message');
-    const $errorIcon = $errorMessage.siblings('.error-icon');
     
     event.preventDefault();
     
     // Validation against empty / oversized tweet
     if ($errorMessage.is(':visible')) {
-      $errorMessage.hide();
-      $errorIcon.hide();
+      $errorMessage.slideUp('fast');
+      $errorIcon.slideUp('fast');
     }
     if (!$textArea.val()) {
       $errorMessage.text('Your tweet can\'t be empty');
-      $errorMessage.slideDown('fast');
-      $errorIcon.slideDown('fast');
+      $errorMessage.slideDown('550');
+      $errorIcon.slideDown('550');
       $textArea.focus();
       return;
     }
     if ($textArea.val().length > 140) {
       $errorMessage.text('Your tweet is too long');
-      $errorMessage.slideDown('fast');
-      $errorIcon.slideDown('fast');
+      $errorMessage.slideDown('550');
+      $errorIcon.slideDown('550');
       $textArea.focus();
       return;
     }

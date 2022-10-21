@@ -15,21 +15,21 @@ nav {
   font-size: 1.5em
 }
 
-.write-new {
+.write-new-button {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
 
-.write-new:hover {
-  color: black;
+.write-new-button:hover {
+  cursor: pointer;
 }
 
-.write-new>p {
+.write-new-button>p {
   margin: .5em 0em;
 }
 
-.write-new>i {
+.write-new-button>i {
   color: #E7C800
 }
